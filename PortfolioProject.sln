@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioProject.Core", "PortfolioProject.Core\PortfolioProject.Core.csproj", "{B5419F97-89BE-4FBF-8BC0-BCA3ADDCCB89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioProject.Data", "PortfolioProject.Data\PortfolioProject.Data.csproj", "{DAB09D82-9E5B-48F1-84FD-93B8C3FCC9C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioProject.Services", "PortfolioProject.Services\PortfolioProject.Services.csproj", "{D36AD34A-EAD9-4BFC-BC77-9EE8D7D0BDF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortfolioProject.Web", "PortfolioProject.Web\PortfolioProject.Web.csproj", "{88A7F2D8-52A3-4B9E-BDCA-694E6E0EB49F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
