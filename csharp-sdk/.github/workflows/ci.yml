@@ -1,0 +1,80 @@
+name: Build and Test
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        configuration: [Debug, Release]
+      fail-fast: false
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Clone the repo
+      uses: actions/checkout@v4
+      with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          9.0.x
+          8.0.x
+
+    # NetFX testing on non-Windows requires mono
+    - name: Setup Mono
+      if: runner.os == 'Linux'
+      run: sudo apt-get install -y mono-devel
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install dependencies for tests
+      run: npm install @modelcontextprotocol/server-everything
+
+    - name: Install dependencies for tests
+      run: npm install @modelcontextprotocol/server-memory
+
+    - name: Build
+      run: dotnet build --configuration ${{ matrix.configuration }}
+
+    - name: Pack
+      run: dotnet pack --configuration ${{ matrix.configuration }}
+
+    - name: Test
+      run: >-
+        dotnet test
+        --filter '(Execution!=Manual)'
+        --no-build
+        --configuration ${{ matrix.configuration }}
+        --logger "console;verbosity=normal"
+        --logger "trx"
+        --logger "GitHubActions;summary.includePassedTests=true;summary.includeSkippedTests=true"
+        --blame
+        --blame-hang-timeout 7m
+        --blame-crash
+        --results-directory testresults
+        --collect "XPlat Code Coverage" -- RunConfiguration.CollectSourceInformation=true
+
+    - name: Upload test results artifact
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: testresults-${{ matrix.os }}-${{ matrix.configuration }}
+        path: testresults/**
+
+  publish-coverage:
+    if: github.actor != 'dependabot[bot]'
+    needs: build
+    uses: ./.github/workflows/code-coverage.yml
+    secrets: inherit

@@ -1,0 +1,242 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center mb-5">
+            <h1 class="display-4">Yasin Ceyhan</h1>
+            <p class="lead">Full Stack .NET Developer</p>
+            <div class="d-flex justify-content-center mt-4">
+                <a href="#projects" class="btn btn-primary mx-2">Projelerim</a>
+                <a href="#contact" class="btn btn-outline-primary mx-2">İletişim</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <h2>Hakkımda</h2>
+            <p>
+                Merhaba, ben Yasin Ceyhan. 5 yıllık yazılım geliştirme deneyimine sahip Full Stack .NET Developer'ım. 
+                Web uygulamaları, kurumsal çözümler ve modern kullanıcı arayüzleri geliştirme konusunda uzmanlığım bulunmaktadır.
+            </p>
+            <p>
+                ASP.NET Core, Entity Framework, SQL Server, JavaScript, Angular ve React teknolojileri ile 
+                geniş ölçekli projelerde çalıştım ve farklı sektörlere yönelik çözümler ürettim.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h2>Yeteneklerim</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Backend</h5>
+                    <ul class="list-unstyled">
+                        <li>ASP.NET Core</li>
+                        <li>C#</li>
+                        <li>Entity Framework Core</li>
+                        <li>SQL Server</li>
+                        <li>RESTful API</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>Frontend</h5>
+                    <ul class="list-unstyled">
+                        <li>HTML/CSS</li>
+                        <li>JavaScript/TypeScript</li>
+                        <li>React</li>
+                        <li>Angular</li>
+                        <li>Bootstrap</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5" />
+
+    <div id="projects" class="row mb-5">
+        <div class="col-md-12 text-center mb-4">
+            <h2>Öne Çıkan Projelerim</h2>
+        </div>
+
+        @if (Model.FeaturedProjects != null && Model.FeaturedProjects.Any())
+        {
+            foreach (var project in Model.FeaturedProjects)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="@project.FeaturedImage" class="card-img-top" alt="@project.Title">
+                        <div class="card-body">
+                            <h5 class="card-title">@project.Title</h5>
+                            <p class="card-text">@project.Description</p>
+                            <p><strong>Teknolojiler:</strong> @project.Technologies</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            @if (!string.IsNullOrEmpty(project.LiveUrl))
+                            {
+                                <a href="@project.LiveUrl" class="btn btn-sm btn-primary me-2" target="_blank">Canlı Demo</a>
+                            }
+                            @if (!string.IsNullOrEmpty(project.GitHubUrl))
+                            {
+                                <a href="@project.GitHubUrl" class="btn btn-sm btn-outline-dark" target="_blank">GitHub</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="E-Ticaret Projesi">
+                    <div class="card-body">
+                        <h5 class="card-title">E-Ticaret Projesi</h5>
+                        <p class="card-text">Tam kapsamlı bir e-ticaret platformu. Kullanıcı yönetimi, ürün kataloğu, sepet işlemleri ve ödeme entegrasyonu içerir.</p>
+                        <p><strong>Teknolojiler:</strong> ASP.NET Core, Entity Framework, SQL Server, Bootstrap, JavaScript</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-primary me-2">Canlı Demo</a>
+                        <a href="#" class="btn btn-sm btn-outline-dark">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="CRM Sistemi">
+                    <div class="card-body">
+                        <h5 class="card-title">CRM Sistemi</h5>
+                        <p class="card-text">Müşteri ilişkileri yönetim sistemi. Müşteri takibi, fırsat yönetimi, görev planlaması ve raporlama özellikleri.</p>
+                        <p><strong>Teknolojiler:</strong> ASP.NET Core, Entity Framework, SQL Server, Angular, TypeScript</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-primary me-2">Canlı Demo</a>
+                        <a href="#" class="btn btn-sm btn-outline-dark">GitHub</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Blog Platformu">
+                    <div class="card-body">
+                        <h5 class="card-title">Blog Platformu</h5>
+                        <p class="card-text">Çok kullanıcılı blog platformu. İçerik yönetimi, yorum sistemi, etiketleme ve SEO özellikleriyle donatılmış.</p>
+                        <p><strong>Teknolojiler:</strong> ASP.NET Core, Entity Framework, SQL Server, React, Bootstrap</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="btn btn-sm btn-primary me-2">Canlı Demo</a>
+                        <a href="#" class="btn btn-sm btn-outline-dark">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr class="my-5" />
+
+    <div id="skills" class="row mb-5">
+        <div class="col-md-12 text-center mb-4">
+            <h2>Becerilerim</h2>
+        </div>
+
+        @if (Model.Skills != null && Model.Skills.Any())
+        {
+            foreach (var skill in Model.Skills)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="@skill.Icon fa-3x mb-3"></i>
+                            <h5 class="card-title">@skill.Name</h5>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: @(skill.Proficiency)%;" 
+                                     aria-valuenow="@skill.Proficiency" aria-valuemin="0" aria-valuemax="100">@skill.Proficiency%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-code fa-3x mb-3"></i>
+                        <h5 class="card-title">C#</h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 95%;" 
+                                 aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">95%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-database fa-3x mb-3"></i>
+                        <h5 class="card-title">SQL Server</h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%;" 
+                                 aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fab fa-js fa-3x mb-3"></i>
+                        <h5 class="card-title">JavaScript</h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 85%;" 
+                                 aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fab fa-angular fa-3x mb-3"></i>
+                        <h5 class="card-title">Angular</h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%;" 
+                                 aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr class="my-5" />
+
+    <div id="contact" class="row">
+        <div class="col-md-12 text-center mb-4">
+            <h2>İletişim</h2>
+        </div>
+        <div class="col-md-6 offset-md-3">
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Ad Soyad</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-posta</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Konu</label>
+                    <input type="text" class="form-control" id="subject" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mesaj</label>
+                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Gönder</button>
+            </form>
+        </div>
+    </div>
+</div>

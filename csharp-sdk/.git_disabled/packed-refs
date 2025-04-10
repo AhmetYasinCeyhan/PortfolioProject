@@ -1,0 +1,10 @@
+# pack-refs with: peeled fully-peeled sorted 
+77871c5aac6e3a30f31f1302ad00b336c9cef6d6 refs/remotes/origin/main
+5e5b559c6dc78c4eb72c9bf01d7ec64b4599d12d refs/remotes/origin/mdk/fix-readme
+4d61007c111bf92395beac061b6ef4ed0115a03f refs/tags/v0.1.0-preview.1.25171.12
+9330774795e0544940e6ad25721da7732b52fd73 refs/tags/v0.1.0-preview.2
+330e5264463c19a084f1c9c53bb19f14e7f3b218 refs/tags/v0.1.0-preview.3
+4c537ef86bd8bb10980962a8f0bac001453c5cd9 refs/tags/v0.1.0-preview.4
+c70dde3feba66cce21b74e2d3f277832836b62d8 refs/tags/v0.1.0-preview.5
+d21d9338762d1ee8adf029e65eea6e591dd0ef38 refs/tags/v0.1.0-preview.6
+39ab6cde0d818284a4d04cfea0ba2d019d779ede refs/tags/v0.1.0-preview.7
